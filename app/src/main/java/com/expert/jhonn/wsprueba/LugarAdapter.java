@@ -48,8 +48,8 @@ public class LugarAdapter extends RecyclerView.Adapter<LugarAdapter.LugarViewHol
     public void onBindViewHolder(LugarViewHolder holder, int position) {
         Lugar lugar = lugarList.get(position);
         holder.description.setText(lugar.getDescripcion());
-        holder.coordena.setText(lugar.getLatitud()+","+lugar.getLongitud());
-        Glide.with(holder.imageView.getContext()).load(lugar.getImagen()).centerCrop().into(holder.imageView);
+        holder.coordena.setText(lugar.getUbicacion());
+        Glide.with(holder.imageView.getContext()).load(lugar.getImagen()).into(holder.imageView);
         holder.setOnItemClickListener(lugar,ItemClickListener);
     }
 

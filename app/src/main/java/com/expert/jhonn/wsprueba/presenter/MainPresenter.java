@@ -43,7 +43,7 @@ public class MainPresenter implements IMainPresenter{
                 try {
                     lugars=parseJson(response);
                     mostrarLugaresRV();
-                    Log.d(MainPresenter.class.getName(),"Error Volley ;(");
+                    //Log.d(MainPresenter.class.getName(),"Error Volley ;(");
                 } catch (JSONException e) {
                     e.printStackTrace();
                 }
@@ -71,12 +71,16 @@ public class MainPresenter implements IMainPresenter{
         final String LAT = "G";
         final String LONG = "H";
         final String L = "L";
+        final String C="C";
+        final String E="E";
 
         List<Lugar> lugars= new ArrayList<>();
         for(int i = 0; i < jsonObject.length(); i++) {
             Lugar lugar= new Lugar();
             JSONObject lugarObject = jsonObject.getJSONObject(i);
-            lugar.setDescripcion(lugarObject.getString(B));
+            lugar.setNombre(lugarObject.getString(B));
+            lugar.setUbicacion(lugarObject.getString(E));
+            lugar.setDescripcion(lugarObject.getString(C));
             lugar.setLatitud(lugarObject.getString(LAT));
             lugar.setLongitud(lugarObject.getString(LONG));
             lugar.setImagen(lugarObject.getString(L));
