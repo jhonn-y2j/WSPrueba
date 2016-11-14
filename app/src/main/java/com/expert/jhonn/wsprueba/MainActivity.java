@@ -47,7 +47,7 @@ public class MainActivity extends AppCompatActivity implements IMainView, onItem
         seekBar.setOnSeekBarChangeListener(new CircularSeekBar.OnCircularSeekBarChangeListener() {
             @Override
             public void onProgressChanged(CircularSeekBar circularSeekBar, int progress, boolean fromUser) {
-                textView.setText(" "+ progress+ " min ");
+                textView.setText(" "+ progress+ " minutos ");
             }
 
             @Override
