@@ -1,6 +1,7 @@
 package com.expert.jhonn.wsprueba;
 
 import android.content.Intent;
+import android.graphics.Color;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
@@ -13,6 +14,7 @@ import android.util.Log;
 import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.expert.jhonn.wsprueba.modelo.Lugar;
@@ -30,12 +32,34 @@ public class MainActivity extends AppCompatActivity implements IMainView, onItem
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.seek_circular);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        recyclerView=(RecyclerView)findViewById(R.id.recycler_view);
-        iMainPresenter = new MainPresenter(getApplicationContext(),this);
+        //recyclerView=(RecyclerView)findViewById(R.id.recycler_view);
+        //iMainPresenter = new MainPresenter(getApplicationContext(),this);
+
+        CircularSeekBar seekBar= (CircularSeekBar)findViewById(R.id.circularSeekBa);
+        final TextView textView=(TextView)findViewById(R.id.text1);
+        seekBar.getProgress();
+        seekBar.setProgress(1);
+
+        seekBar.setOnSeekBarChangeListener(new CircularSeekBar.OnCircularSeekBarChangeListener() {
+            @Override
+            public void onProgressChanged(CircularSeekBar circularSeekBar, int progress, boolean fromUser) {
+                textView.setText(" "+ progress+ " min ");
+            }
+
+            @Override
+            public void onStopTrackingTouch(CircularSeekBar seekBar) {
+
+            }
+
+            @Override
+            public void onStartTrackingTouch(CircularSeekBar seekBar) {
+
+            }
+        });
 
     }
 
